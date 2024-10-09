@@ -1,12 +1,14 @@
 package karatechop;
 
 public class KarateChop {
-    public int chop(int searchNumber, int[] numberArray) {
+    public ChopModel chop(int searchNumber, int[] numberArray) {
+        ChopModel chopModel = new ChopModel();
         for(int i = 0; i<numberArray.length; i++){
             if(searchNumber == numberArray[i]){
-                return i;
+                chopModel.setArraySlot(i);
+                return chopModel;
             }
         }
-        return -1;
+        return chopModel;
     }
 }
