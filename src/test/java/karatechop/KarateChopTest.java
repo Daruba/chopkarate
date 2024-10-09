@@ -53,8 +53,40 @@ public class KarateChopTest {
         chopModel = karateChop.chop(1, numberArray);
         Assertions.assertEquals(0, chopModel.getArraySlot());
         Assertions.assertTrue(chopModel.getSearchCount() > 0);
-        System.out.println(chopModel.getSearchCount());
+        Assertions.assertTrue(chopModel.getSearchCount() <= numberArray.length/2);
+
+        chopModel = karateChop.chop(10, numberArray);
+        Assertions.assertEquals(9, chopModel.getArraySlot());
+        Assertions.assertTrue(chopModel.getSearchCount() > 0);
+        Assertions.assertTrue(chopModel.getSearchCount() <= numberArray.length/2);
+
+        chopModel = karateChop.chop(5, numberArray);
+        Assertions.assertEquals(4, chopModel.getArraySlot());
+        Assertions.assertTrue(chopModel.getSearchCount() > 0);
         Assertions.assertTrue(chopModel.getSearchCount() <= numberArray.length/2);
     }
+    @Test
+    public void testBinarySearchUnorderedArray() {
+        KarateChop karateChop = new KarateChop();
+        int[] numberArray = {1,3,5,7,9,2,4,6,8,10};
+        ChopModel chopModel = karateChop.chop(7, numberArray);
+        Assertions.assertEquals(6, chopModel.getArraySlot());
+        Assertions.assertTrue(chopModel.getSearchCount() > 0);
+        Assertions.assertTrue(chopModel.getSearchCount() <= numberArray.length/2);
 
+        chopModel = karateChop.chop(1, numberArray);
+        Assertions.assertEquals(0, chopModel.getArraySlot());
+        Assertions.assertTrue(chopModel.getSearchCount() > 0);
+        Assertions.assertTrue(chopModel.getSearchCount() <= numberArray.length/2);
+
+        chopModel = karateChop.chop(10, numberArray);
+        Assertions.assertEquals(9, chopModel.getArraySlot());
+        Assertions.assertTrue(chopModel.getSearchCount() > 0);
+        Assertions.assertTrue(chopModel.getSearchCount() <= numberArray.length/2);
+
+        chopModel = karateChop.chop(5, numberArray);
+        Assertions.assertEquals(4, chopModel.getArraySlot());
+        Assertions.assertTrue(chopModel.getSearchCount() > 0);
+        Assertions.assertTrue(chopModel.getSearchCount() <= numberArray.length/2);
+    }
 }

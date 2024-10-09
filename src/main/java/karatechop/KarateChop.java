@@ -1,9 +1,12 @@
 package karatechop;
 
+import java.util.Arrays;
+
 public class KarateChop {
 
     public ChopModel chop(int searchNumber, int[] numberArray) {
         ChopModel chopModel = new ChopModel();
+        numberArray = Arrays.stream(numberArray).sorted().toArray();
         if (numberArray.length == 0) {
             return chopModel;
         }
