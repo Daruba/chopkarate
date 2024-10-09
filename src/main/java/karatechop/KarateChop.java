@@ -6,10 +6,11 @@ public class KarateChop {
 
     public ChopModel chop(int searchNumber, int[] numberArray) {
         ChopModel chopModel = new ChopModel();
-        numberArray = Arrays.stream(numberArray).sorted().toArray();
         if (numberArray.length == 0) {
             return chopModel;
         }
+        numberArray = Arrays.stream(numberArray).sorted().toArray();
+
         int startPoint = 0;
         int endPoint = numberArray.length - 1;
 

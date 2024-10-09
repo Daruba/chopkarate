@@ -89,4 +89,26 @@ public class KarateChopTest {
         Assertions.assertTrue(chopModel.getSearchCount() > 0);
         Assertions.assertTrue(chopModel.getSearchCount() <= numberArray.length/2);
     }
+    @Test
+    public void intBoundary(){
+
+        KarateChop karateChop = new KarateChop();
+        int[] numberArray = {1,3,5,7,9,2,4,6,8,10};
+        ChopModel chopModel = karateChop.chop(2147483647, numberArray);
+        Assertions.assertEquals(-1, chopModel.getArraySlot());
+        Assertions.assertTrue(chopModel.getSearchCount() > 0);
+        Assertions.assertTrue(chopModel.getSearchCount() <= numberArray.length/2);
+
+        int[] numberArray2 = {1,3,5,7,9,2,4,6,8,10,11,12,13,14,2147483647};
+        chopModel = karateChop.chop(2147483647, numberArray2);
+        Assertions.assertEquals(14, chopModel.getArraySlot());
+        Assertions.assertTrue(chopModel.getSearchCount() > 0);
+        Assertions.assertTrue(chopModel.getSearchCount() <= numberArray.length/2);
+
+        int[] numberArray3 =  {1,3,5,7,9,2,4,-6,8,10,11,12,13,14,-2147483647};
+        chopModel = karateChop.chop(-2147483647, numberArray3);
+        Assertions.assertEquals(0, chopModel.getArraySlot());
+        Assertions.assertTrue(chopModel.getSearchCount() > 0);
+        Assertions.assertTrue(chopModel.getSearchCount() <= numberArray.length/2);
+    }
 }
