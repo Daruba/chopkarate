@@ -1,12 +1,27 @@
 package karatechop;
 
 public class KarateChop {
+
     public ChopModel chop(int searchNumber, int[] numberArray) {
         ChopModel chopModel = new ChopModel();
-        for(int i = 0; i<numberArray.length; i++){
-            if(searchNumber == numberArray[i]){
-                chopModel.setArraySlot(i);
-                return chopModel;
+        if (numberArray.length == 0) {
+            return chopModel;
+        }
+        int startPoint = 0;
+        int endPoint = numberArray.length - 1;
+
+        while (startPoint <= endPoint) {
+            int middle = startPoint + (endPoint - startPoint) / 2;
+            chopModel.setSearchCount(chopModel.getSearchCount() + 1);
+            if (numberArray[middle] == searchNumber) {
+                chopModel.setArraySlot(middle);
+                break;
+            }
+            if (numberArray[middle] < searchNumber) {
+                startPoint = middle+1;
+
+            } else {
+                endPoint = middle - 1;
             }
         }
         return chopModel;
